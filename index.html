@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhinav Kumar Singh - Professional Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e5e7eb;
+        }
+        .bg-custom-black { background-color: #0a0a0a; }
+        .bg-custom-card { background-color: #111111; }
+        .border-custom { border-color: #222222; }
+        .accent-color { color: #38bdf8; }
+        .accent-bg { background-color: #38bdf8; }
+        .accent-border { border-color: #38bdf8; }
+
+        /* Typing effect styles */
+        .typed-cursor {
+            opacity: 1;
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Scrollbar styles */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111111;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #38bdf8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0ea5e9;
+        }
+        
+        /* Fade-in animation */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid #38bdf8;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-custom-black">
+
+    <!-- Header & Navigation -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white">AKS.</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-gray-300 hover:text-sky-400 transition">About</a>
+                <a href="#education" class="text-gray-300 hover:text-sky-400 transition">Education</a>
+                <a href="#experience" class="text-gray-300 hover:text-sky-400 transition">Experience</a>
+                <a href="#projects" class="text-gray-300 hover:text-sky-400 transition">Projects</a>
+                <a href="#certifications" class="text-gray-300 hover:text-sky-400 transition">Certifications</a>
+                <a href="#career-corner" class="text-gray-300 hover:text-sky-400 transition">Career Corner</a>
+                <a href="#contact" class="text-gray-300 hover:text-sky-400 transition">Contact</a>
+            </div>
+             <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-custom-card">
+            <a href="#about" class="block text-center py-2 px-4 text-gray-300 hover:text-sky-400 transition">About</a>
+            <a href="#education" class="block text-center py-2 px-4 text-gray-300 hover:text-sky-400 transition">Education</a>
+            <a href="#experience" class="block text-center py-2 px-4 text-gray-300 hover:text-sky-400 transition">Experience</a>
+            <a href="#projects" class="block text-center py-2 px-4 text-gray-300 hover:text-sky-400 transition">Projects</a>
+            <a href="#certifications" class="block text-center py-2 px-4 text-gray-300 hover:text-sky-400 transition">Certifications</a>
+            <a href="#career-corner" class="block text-center py-2 px-4 text-gray-300 hover:text-sky-400 transition">Career Corner</a>
+            <a href="#contact" class="block text-center py-2 px-4 text-gray-300 hover:text-sky-400 transition">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 pt-24 md:pt-32">
+
+        <!-- Hero Section -->
+        <section id="home" class="min-h-[80vh] flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 text-center md:text-left">
+                <span class="text-sky-400 font-semibold">Hello, I'm</span>
+                <h1 class="text-4xl md:text-6xl font-black text-white mt-2 mb-4">Abhinav Kumar Singh</h1>
+                <h2 class="text-2xl md:text-3xl font-semibold text-gray-300">I'm a <span id="typed-text" class="accent-color"></span></h2>
+                <p class="text-gray-400 mt-6 max-w-md mx-auto md:mx-0">
+                    A passionate Mechanical Engineer specializing in computational mechanics, fluid dynamics, and machine learning. I thrive on solving complex engineering challenges with elegant and efficient solutions.
+                </p>
+                <div class="mt-8 flex justify-center md:justify-start space-x-4">
+                    <!-- Social links -->
+                    <a href="https://www.linkedin.com/in/mechinavsingh" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-sky-400"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                    <a href="https://github.com/mechinav" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-sky-400"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></svg></a>
+                    <a href="mailto:mechinavsingh@gmail.com" class="text-gray-400 hover:text-sky-400"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg></a>
+                </div>
+            </div>
+            <div class="md:w-1/2 mt-10 md:mt-0 flex justify-center">
+                <img src="https://lh3.googleusercontent.com/d/1qeyOf7928mWd7deQmNPUw3jLIleK4l_d" alt="Abhinav Kumar Singh" class="rounded-full border-4 border-sky-500 shadow-lg w-64 h-64 md:w-80 md:h-80 object-cover object-top">
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 fade-in-section">
+            <h2 class="text-3xl font-bold text-center text-white mb-2">About Me</h2>
+            <div class="w-20 h-1 bg-sky-500 mx-auto mb-12"></div>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/3">
+                     <img src="https://placehold.co/600x600/111111/38bdf8?text=Profile" alt="About Abhinav Kumar Singh" class="rounded-lg shadow-2xl w-full">
+                </div>
+                <div class="md:w-2/3">
+                    <h3 class="text-2xl font-semibold text-sky-400 mb-4">M.Tech in Computational & Experimental Mechanics</h3>
+                    <p class="text-gray-400 mb-4">
+                        I am a dedicated and results-oriented engineer currently pursuing my Master's at IIT Madras. With a strong foundation in Mechanical Engineering and specialized knowledge in Thermo-Fluid dynamics from my research at IIT Hyderabad, I am passionate about applying computational tools to solve real-world problems. My experience ranges from academic research in turbulence modeling to industrial training in high-pressure boiler systems.
+                    </p>
+                    <p class="text-gray-400">
+                        My technical arsenal includes a deep proficiency in simulation software like ANSYS and COMSOL, coupled with strong programming skills in MATLAB and Python. I am driven by a curiosity to explore the intersections of traditional mechanics with modern data-driven techniques, including machine learning and computer vision, to innovate and optimize engineering systems.
+                    </p>
+                    <div class="mt-8">
+                        <button id="get-in-touch-btn" class="inline-block bg-sky-500 text-white font-semibold px-6 py-3 rounded-lg hover:bg-sky-600 transition">Get In Touch</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 fade-in-section">
+            <h2 class="text-3xl font-bold text-center text-white mb-2">Technical Skillset</h2>
+            <div class="w-20 h-1 bg-sky-500 mx-auto mb-12"></div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 text-center">
+                <div class="bg-custom-card p-6 rounded-lg border border-custom hover:border-sky-500 hover:-translate-y-1 transition-all"><p class="font-semibold text-lg">ANSYS (Fluent)</p></div>
+                <div class="bg-custom-card p-6 rounded-lg border border-custom hover:border-sky-500 hover:-translate-y-1 transition-all"><p class="font-semibold text-lg">SOLIDWORKS</p></div>
+                <div class="bg-custom-card p-6 rounded-lg border border-custom hover:border-sky-500 hover:-translate-y-1 transition-all"><p class="font-semibold text-lg">MATLAB</p></div>
+                <div class="bg-custom-card p-6 rounded-lg border border-custom hover:border-sky-500 hover:-translate-y-1 transition-all"><p class="font-semibold text-lg">Python</p></div>
+                <div class="bg-custom-card p-6 rounded-lg border border-custom hover:border-sky-500 hover:-translate-y-1 transition-all"><p class="font-semibold text-lg">CFD</p></div>
+                <div class="bg-custom-card p-6 rounded-lg border border-custom hover:border-sky-500 hover:-translate-y-1 transition-all"><p class="font-semibold text-lg">FEA</p></div>
+                <div class="bg-custom-card p-6 rounded-lg border border-custom hover:border-sky-500 hover:-translate-y-1 transition-all"><p class="font-semibold text-lg">Machine Learning</p></div>
+                <div class="bg-custom-card p-6 rounded-lg border border-custom hover:border-sky-500 hover:-translate-y-1 transition-all"><p class="font-semibold text-lg">COMSOL</p></div>
+                <div class="bg-custom-card p-6 rounded-lg border border-custom hover:border-sky-500 hover:-translate-y-1 transition-all"><p class="font-semibold text-lg">CATIA V6</p></div>
+                <div class="bg-custom-card p-6 rounded-lg border border-custom hover:border-sky-500 hover:-translate-y-1 transition-all"><p class="font-semibold text-lg">C++</p></div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="py-20 fade-in-section">
+            <h2 class="text-3xl font-bold text-center text-white mb-2">Education</h2>
+            <div class="w-20 h-1 bg-sky-500 mx-auto mb-12"></div>
+            <div class="relative max-w-2xl mx-auto">
+                <!-- Vertical timeline bar -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gray-700"></div>
+                
+                <!-- Education Item 1 -->
+                <div class="mb-8 flex justify-between items-center w-full">
+                    <div class="order-1 w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-sky-500 shadow-xl w-8 h-8 rounded-full"><h1 class="mx-auto font-semibold text-lg text-white">1</h1></div>
+                    <div class="order-1 bg-custom-card rounded-lg shadow-xl w-5/12 px-6 py-4 border-l-4 accent-border">
+                        <p class="text-sm text-gray-400">2025 - 2027 (Ongoing)</p>
+                        <h3 class="mb-2 font-bold text-white text-lg">M.Tech in Computational and Experimental Mechanics</h3>
+                        <p class="text-sm font-medium leading-snug tracking-wide text-gray-300">Indian Institute of Technology, Madras</p>
+                    </div>
+                </div>
+
+                <!-- Education Item 2 -->
+                <div class="mb-8 flex justify-between flex-row-reverse items-center w-full">
+                    <div class="order-1 w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-sky-500 shadow-xl w-8 h-8 rounded-full"><h1 class="mx-auto font-semibold text-lg text-white">2</h1></div>
+                    <div class="order-1 bg-custom-card rounded-lg shadow-xl w-5/12 px-6 py-4 border-r-4 accent-border">
+                        <p class="text-sm text-gray-400">2024 - 2025</p>
+                        <h3 class="mb-2 font-bold text-white text-lg">Master's RA in ThermoFluid Engineering</h3>
+                        <p class="text-sm font-medium leading-snug tracking-wide text-gray-300">Indian Institute of Technology, Hyderabad</p>
+                        <div class="mt-3">
+                            <a href="https://drive.google.com/file/d/1Go0VM64OqFQ83mex7CwQFW-hOOvi-4Ax/view?usp=drivesdk" target="_blank" class="text-sky-400 text-sm font-semibold hover:underline">View Marksheet</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Education Item 3 -->
+                <div class="mb-8 flex justify-between items-center w-full">
+                    <div class="order-1 w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-sky-500 shadow-xl w-8 h-8 rounded-full"><h1 class="mx-auto font-semibold text-lg text-white">3</h1></div>
+                    <div class="order-1 bg-custom-card rounded-lg shadow-xl w-5/12 px-6 py-4 border-l-4 accent-border">
+                        <p class="text-sm text-gray-400">2018 - 2022</p>
+                        <h3 class="mb-2 font-bold text-white text-lg">B.Tech in Mechanical Engineering</h3>
+                        <p class="text-sm font-medium leading-snug tracking-wide text-gray-300">Madan Mohan Malaviya University of Technology</p>
+                        <div class="mt-3">
+                            <a href="https://drive.google.com/file/d/1u2K6VaV5E8eZsaTANNrRxReHbXFkHTsN/view?usp=drivesdk" target="_blank" class="text-sky-400 text-sm font-semibold hover:underline">View Degree & Transcripts</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education Item 4 -->
+                <div class="mb-8 flex justify-between flex-row-reverse items-center w-full">
+                    <div class="order-1 w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-sky-500 shadow-xl w-8 h-8 rounded-full"><h1 class="mx-auto font-semibold text-lg text-white">4</h1></div>
+                    <div class="order-1 bg-custom-card rounded-lg shadow-xl w-5/12 px-6 py-4 border-r-4 accent-border">
+                        <p class="text-sm text-gray-400">2017</p>
+                        <h3 class="mb-2 font-bold text-white text-lg">Intermediate / Class XII</h3>
+                        <p class="text-sm font-medium leading-snug tracking-wide text-gray-300">Boys' High School & College, Prayagraj</p>
+                        <div class="mt-3">
+                            <a href="https://drive.google.com/file/d/1S5YiVwB2dCbdcM__oLwNh3Uk7VD6Ui8Q/view?usp=drivesdk" target="_blank" class="text-sky-400 text-sm font-semibold hover:underline">View Marksheet</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education Item 5 -->
+                 <div class="mb-8 flex justify-between items-center w-full">
+                    <div class="order-1 w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-sky-500 shadow-xl w-8 h-8 rounded-full"><h1 class="mx-auto font-semibold text-lg text-white">5</h1></div>
+                    <div class="order-1 bg-custom-card rounded-lg shadow-xl w-5/12 px-6 py-4 border-l-4 accent-border">
+                        <p class="text-sm text-gray-400">2015</p>
+                        <h3 class="mb-2 font-bold text-white text-lg">High School / Class X</h3>
+                        <p class="text-sm font-medium leading-snug tracking-wide text-gray-300">Boys' High School & College, Prayagraj</p>
+                        <div class="mt-3">
+                            <a href="https://drive.google.com/file/d/1_Z9wDv6C9BrN1hZpoqOm2usgCfJUBpPf/view?usp=drivesdk" target="_blank" class="text-sky-400 text-sm font-semibold hover:underline">View Marksheet</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20 fade-in-section">
+            <h2 class="text-3xl font-bold text-center text-white mb-2">Experience & Training</h2>
+            <div class="w-20 h-1 bg-sky-500 mx-auto mb-12"></div>
+            <div class="relative max-w-2xl mx-auto">
+                <!-- Vertical timeline bar -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gray-700"></div>
+                
+                <!-- Experience Item 1 -->
+                <div class="mb-8 flex justify-between items-center w-full">
+                    <div class="order-1 w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-sky-500 shadow-xl w-8 h-8 rounded-full"><h1 class="mx-auto font-semibold text-lg text-white">1</h1></div>
+                    <div class="order-1 bg-custom-card rounded-lg shadow-xl w-5/12 px-6 py-4 border-l-4 accent-border">
+                        <p class="text-sm text-gray-400">Jul 2024 - Jul 2025</p>
+                        <h3 class="mb-2 font-bold text-white text-lg">Master's Research Assistant</h3>
+                        <p class="text-sm font-medium leading-snug tracking-wide text-gray-300">IIT Hyderabad</p>
+                        <ul class="list-disc list-inside mt-3 text-gray-400 text-sm">
+                            <li>Specialized in ThermoFluid Engineering within the MAE Department.</li>
+                        </ul>
+                        <div class="mt-3 flex gap-4">
+                            <a href="https://drive.google.com/file/d/14JksTL0h4jx4ESqd7v6Pao5qChCm5IBR/view?usp=drivesdk" target="_blank" class="text-sky-400 text-sm font-semibold hover:underline">View Proof</a>
+                            <a href="https://drive.google.com/file/d/1Go0VM64OqFQ83mex7CwQFW-hOOvi-4Ax/view?usp=drivesdk" target="_blank" class="text-sky-400 text-sm font-semibold hover:underline">View Marksheet</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Item 2 -->
+                <div class="mb-8 flex justify-between flex-row-reverse items-center w-full">
+                    <div class="order-1 w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-sky-500 shadow-xl w-8 h-8 rounded-full"><h1 class="mx-auto font-semibold text-lg text-white">2</h1></div>
+                    <div class="order-1 bg-custom-card rounded-lg shadow-xl w-5/12 px-6 py-4 border-r-4 accent-border">
+                        <p class="text-sm text-gray-400">Nov 2022 - Apr 2024</p>
+                        <h3 class="mb-2 font-bold text-white text-lg">Physics Educator</h3>
+                        <p class="text-sm font-medium leading-snug tracking-wide text-gray-300">Career Shapers, Prayagraj</p>
+                        <ul class="list-disc list-inside mt-3 text-gray-400 text-sm">
+                           <li>Taught and mentored over 120 students for Board and JEE preparation.</li>
+                           <li>Developed curriculum and conducted doubt resolution sessions.</li>
+                        </ul>
+                    </div>
+                </div>
+                 <!-- Experience Item 3 -->
+                <div class="mb-8 flex justify-between items-center w-full">
+                    <div class="order-1 w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-sky-500 shadow-xl w-8 h-8 rounded-full"><h1 class="mx-auto font-semibold text-lg text-white">3</h1></div>
+                    <div class="order-1 bg-custom-card rounded-lg shadow-xl w-5/12 px-6 py-4 border-l-4 accent-border">
+                        <p class="text-sm text-gray-400">Jun 2022 - Jul 2022</p>
+                        <h3 class="mb-2 font-bold text-white text-lg">Summer Intern</h3>
+                        <p class="text-sm font-medium leading-snug tracking-wide text-gray-300">IFFCO, Phulpur Plant</p>
+                        <ul class="list-disc list-inside mt-3 text-gray-400 text-sm">
+                            <li>Analyzed ammonia-based boiler systems for urea production.</li>
+                            <li>Studied the Kellogg Reformer Design for high-pressure steam generation.</li>
+                        </ul>
+                        <div class="mt-3 flex gap-4">
+                            <a href="https://drive.google.com/file/d/14SBgkRgihvVqS9FAlILIzeTp8zRydTHi/view?usp=drivesdk" target="_blank" class="text-sky-400 text-sm font-semibold hover:underline">View Certificate</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 fade-in-section">
+            <h2 class="text-3xl font-bold text-center text-white mb-2">My Projects</h2>
+            <div class="w-20 h-1 bg-sky-500 mx-auto mb-12"></div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-custom-card rounded-lg overflow-hidden border border-custom group flex flex-col">
+                    <img src="https://placehold.co/600x400/111111/38bdf8?text=Turbulent+Flow" alt="Turbulent Flow Project" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-white mb-2">Turbulent-Flow in Helically-Coiled Pipes</h3>
+                        <p class="text-gray-400 mb-4 flex-grow">Numerical analysis and study of single-phase turbulent flow. Compared k-ε turbulence models, validated results with experimental data (<7% error), and studied geometric effects.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-700 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">CFD</span>
+                            <span class="bg-gray-700 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">ANSYS</span>
+                        </div>
+                        <div class="flex space-x-4 mt-4">
+                            <a href="https://drive.google.com/file/d/1uzAl5HALmOPAhzhaEq2hXCzr2KGIEEdR/view?usp=drivesdk" target="_blank" class="text-sky-400 hover:text-sky-300 font-semibold">View Details</a>
+                            <button class="summarize-btn text-sky-400 hover:text-sky-300 font-semibold">✨ Summarize with AI</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="bg-custom-card rounded-lg overflow-hidden border border-custom group flex flex-col">
+                    <img src="https://placehold.co/600x400/111111/38bdf8?text=CNN+Defect+Detection" alt="CNN Project" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-white mb-2">CNN for Casting Defect Detection</h3>
+                        <p class="text-gray-400 mb-4 flex-grow">Built and trained a Convolutional Neural Network (CNN) to detect casting defects in ultrasonic phased array images, evaluating model performance and accuracy.</p>
+                         <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-700 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">Machine Learning</span>
+                            <span class="bg-gray-700 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">Python</span>
+                        </div>
+                        <div class="flex space-x-4 mt-4">
+                           <a href="https://drive.google.com/file/d/14VyiPu_f7EbzYszDCNDUHb9T4GAlh6hI/view?usp=drivesdk" target="_blank" class="text-sky-400 hover:text-sky-300 font-semibold">View Details</a>
+                           <button class="summarize-btn text-sky-400 hover:text-sky-300 font-semibold">✨ Summarize with AI</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="bg-custom-card rounded-lg overflow-hidden border border-custom group flex flex-col">
+                    <img src="https://placehold.co/600x400/111111/38bdf8?text=Helmet+Analysis" alt="Helmet Analysis Project" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-white mb-2">Static & Dynamic Analysis of a Helmet</h3>
+                        <p class="text-gray-400 mb-4 flex-grow">Designed 3D helmet models per BIS Standards and performed FEA simulations in ANSYS to analyze deformation, stresses, and strain, optimizing material selection.</p>
+                         <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-700 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">FEA</span>
+                            <span class="bg-gray-700 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">ANSYS</span>
+                            <span class="bg-gray-700 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">Fusion 360</span>
+                        </div>
+                        <div class="flex space-x-4 mt-4">
+                           <a href="https://drive.google.com/file/d/1Qyhov8gFg5H80KQR_FuzbLuBqWD4MPaY/view?usp=drivesdk" target="_blank" class="text-sky-400 hover:text-sky-300 font-semibold">View Details</a>
+                           <button class="summarize-btn text-sky-400 hover:text-sky-300 font-semibold">✨ Summarize with AI</button>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Project 4 -->
+                <div class="bg-custom-card rounded-lg overflow-hidden border border-custom group flex flex-col">
+                    <img src="https://placehold.co/600x400/111111/38bdf8?text=Additive+Manufacturing" alt="Additive Manufacturing Seminar" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-white mb-2">Seminar on Additive Manufacturing in Jet Engines</h3>
+                        <p class="text-gray-400 mb-4 flex-grow">A comprehensive seminar covering the applications and challenges of using additive manufacturing technologies in the aerospace industry for jet engine components.</p>
+                         <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-700 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">Aerospace</span>
+                            <span class="bg-gray-700 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">3D Printing</span>
+                        </div>
+                        <div class="flex space-x-4 mt-4">
+                           <a href="https://docs.google.com/presentation/d/12yuxMxlrd3A4A3KRhAaIouk0k4j0kNvy/edit?usp=drivesdk&ouid=107124572833731667398&rtpof=true&sd=true" target="_blank" class="text-sky-400 hover:text-sky-300 font-semibold">View Presentation</a>
+                           <button class="summarize-btn text-sky-400 hover:text-sky-300 font-semibold">✨ Summarize with AI</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications & Achievements Section -->
+        <section id="certifications" class="py-20 fade-in-section">
+            <h2 class="text-3xl font-bold text-center text-white mb-2">Certifications & Achievements</h2>
+            <div class="w-20 h-1 bg-sky-500 mx-auto mb-12"></div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Achievement -->
+                <div class="bg-custom-card rounded-lg p-6 border-2 accent-border shadow-lg flex flex-col items-center text-center transition-transform hover:scale-105">
+                    <svg class="w-12 h-12 accent-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <h3 class="text-xl font-bold text-sky-400 mt-4 mb-2">Scholastic Achievement</h3>
+                    <p class="text-white text-lg font-semibold">AIR 650 in GATE 2025</p>
+                    <p class="text-gray-400 mb-4">Engineering Sciences (XE)</p>
+                    <a href="https://drive.google.com/file/d/14UqQe55B2HCP7i99J4gW6o4xHgvkhlAL/view?usp=drivesdk" target="_blank" class="mt-auto text-sky-400 hover:text-sky-300 font-semibold">View Scorecard</a>
+                </div>
+                <!-- Campus Ambassador -->
+                <div class="bg-custom-card rounded-lg p-6 border border-custom flex flex-col items-center text-center transition-transform hover:scale-105">
+                    <svg class="w-12 h-12 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    <h3 class="text-xl font-bold text-white mt-4 mb-2">Campus Ambassador</h3>
+                    <p class="text-gray-400 mb-4">Unmaad, IIM Bangalore</p>
+                    <a href="https://drive.google.com/file/d/14JT0RGguiDLNmkOMET2TVXuk6t833uT9/view?usp=drivesdk" target="_blank" class="mt-auto text-sky-400 hover:text-sky-300 font-semibold">View Certificate</a>
+                </div>
+                <!-- Torque Club -->
+                <div class="bg-custom-card rounded-lg p-6 border border-custom flex flex-col items-center text-center transition-transform hover:scale-105">
+                    <svg class="w-12 h-12 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                    <h3 class="text-xl font-bold text-white mt-4 mb-2">Core Team Member</h3>
+                    <p class="text-gray-400 mb-4">Torque Club, IIT Hyderabad</p>
+                    <a href="https://drive.google.com/file/d/14a25URWXtwgljrtg9RjxUkEFuabCWyPV/view?usp=drivesdk" target="_blank" class="mt-auto text-sky-400 hover:text-sky-300 font-semibold">View Proof</a>
+                </div>
+                <!-- Certificate 1 -->
+                <div class="bg-custom-card rounded-lg p-6 border border-custom flex flex-col items-center text-center transition-transform hover:scale-105">
+                    <svg class="w-12 h-12 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    <h3 class="text-xl font-bold text-white mt-4 mb-2">NI LabVIEW</h3>
+                    <p class="text-gray-400 mb-4">NPTEL Online-Training Workshop</p>
+                    <a href="https://drive.google.com/file/d/14SwWV16PXOlcG9IbQE6xr7zxGtfIi15q/view?usp=drivesdk" target="_blank" class="mt-auto text-sky-400 hover:text-sky-300 font-semibold">View Certificate</a>
+                </div>
+                <!-- Certificate 2 -->
+                <div class="bg-custom-card rounded-lg p-6 border border-custom flex flex-col items-center text-center transition-transform hover:scale-105">
+                    <svg class="w-12 h-12 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    <h3 class="text-xl font-bold text-white mt-4 mb-2">CATIA</h3>
+                    <p class="text-gray-400 mb-4">SoftPro Technologies</p>
+                    <a href="https://drive.google.com/file/d/14SvNctrJrZFhkKeUM8wPt-I-kVDpK1xR/view?usp=drivesdk" target="_blank" class="mt-auto text-sky-400 hover:text-sky-300 font-semibold">View Certificate</a>
+                </div>
+                 <!-- Certificate 3 -->
+                <div class="bg-custom-card rounded-lg p-6 border border-custom flex flex-col items-center text-center transition-transform hover:scale-105">
+                    <svg class="w-12 h-12 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    <h3 class="text-xl font-bold text-white mt-4 mb-2">Industrial Engineering</h3>
+                    <p class="text-gray-400 mb-4">NPTEL Swayam, IIT Roorkee</p>
+                    <a href="https://drive.google.com/file/d/1uye-qZMkXesYUdl336nv1375ZEYTaMy4/view?usp=drivesdk" target="_blank" class="mt-auto text-sky-400 hover:text-sky-300 font-semibold">View Certificate</a>
+                </div>
+                <!-- Ongoing Courses -->
+                <div class="bg-custom-card rounded-lg p-6 border border-custom flex flex-col items-center text-center md:col-span-2 lg:col-span-3 transition-transform hover:scale-105">
+                     <svg class="w-12 h-12 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <h3 class="text-xl font-bold text-white mt-4 mb-2">Currently Learning</h3>
+                    <p class="text-gray-400">Expanding my knowledge with ongoing NPTEL Swayam courses:</p>
+                    <ul class="text-sky-300 mt-2">
+                        <li>Turbulence Modeling (IIT Madras)</li>
+                        <li>Intro to Machine Learning (IIT Madras)</li>
+                        <li>Computational Continuum Mechanics (IIT Guwahati)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- AI Career Corner Section -->
+        <section id="career-corner" class="py-20 fade-in-section">
+            <h2 class="text-3xl font-bold text-center text-white mb-2">✨ AI Career Corner</h2>
+            <div class="w-20 h-1 bg-sky-500 mx-auto mb-12"></div>
+            <p class="text-center text-gray-400 max-w-2xl mx-auto mb-10">
+                Leverage the power of AI to analyze my profile and generate personalized career insights. Discover potential career paths, suggested skills, and project ideas based on my qualifications.
+            </p>
+            <div class="text-center mb-8">
+                <button id="career-advice-btn" class="inline-block bg-sky-500 text-white font-bold text-lg px-8 py-4 rounded-lg hover:bg-sky-600 transition-colors">
+                    Generate Career Insights
+                </button>
+            </div>
+            <div id="career-advice-output" class="bg-custom-card rounded-lg p-8 border border-custom hidden min-h-[200px]">
+                <!-- AI-generated content will appear here -->
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 fade-in-section">
+            <h2 class="text-3xl font-bold text-center text-white mb-2">Get In Touch</h2>
+            <div class="w-20 h-1 bg-sky-500 mx-auto mb-12"></div>
+            <p class="text-center text-gray-400 max-w-2xl mx-auto mb-10">
+                I'm actively seeking internships and full-time opportunities where I can apply my skills in computational mechanics and machine learning. If you have a challenging problem to solve, I'd love to connect!
+            </p>
+            <div class="text-center">
+                <a href="mailto:mechinavsingh@gmail.com" class="inline-block bg-sky-500 text-white font-bold text-lg px-8 py-4 rounded-lg hover:bg-sky-600 transition-colors">
+                    Say Hello
+                </a>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Modals -->
+    <div id="contact-modal" class="fixed inset-0 bg-black bg-opacity-70 z-[60] hidden items-center justify-center p-4">
+        <div class="bg-custom-card rounded-lg shadow-2xl p-8 max-w-sm w-full relative border border-custom">
+            <button id="close-contact-modal-btn" class="absolute top-2 right-4 text-gray-500 hover:text-white text-3xl">&times;</button>
+            <h3 class="text-2xl font-bold text-sky-400 mb-6 text-center">Contact Information</h3>
+            <div class="space-y-4">
+                <div>
+                    <p class="text-sm text-gray-400">Phone Number</p>
+                    <p class="text-white font-semibold text-lg">+91 7523934287</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-400">Official Email</p>
+                    <a href="mailto:AM25M001@SMAIL.IITM.AC.IN" class="text-white font-semibold text-lg hover:text-sky-400 transition">AM25M001@SMAIL.IITM.AC.IN</a>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-400">Personal Email</p>
+                    <a href="mailto:mechinavsingh@gmail.com" class="text-white font-semibold text-lg hover:text-sky-400 transition">mechinavsingh@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="summary-modal" class="fixed inset-0 bg-black bg-opacity-70 z-[60] hidden items-center justify-center p-4">
+        <div class="bg-custom-card rounded-lg shadow-2xl p-8 max-w-lg w-full relative border border-custom">
+            <button id="close-summary-modal-btn" class="absolute top-2 right-4 text-gray-500 hover:text-white text-3xl">&times;</button>
+            <h3 class="text-2xl font-bold text-sky-400 mb-4 text-center">✨ AI Project Summary</h3>
+            <div id="summary-content" class="text-gray-300 space-y-2 min-h-[150px]">
+                <!-- AI-generated summary will appear here -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="border-t border-custom mt-20">
+        <div class="container mx-auto px-6 py-6 text-center text-gray-500">
+            <p>&copy; 2025 Abhinav Kumar Singh. All Rights Reserved.</p>
+            <p class="text-sm mt-1">Designed & Built with ❤️</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Gemini API Configuration ---
+        const API_KEY = ""; // Keep this empty, it will be handled by the environment.
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${API_KEY}`;
+
+        // --- Core Functions ---
+        
+        async function callGeminiAPI(prompt, maxRetries = 3) {
+            let attempt = 0;
+            while (attempt < maxRetries) {
+                try {
+                    const payload = {
+                        contents: [{ parts: [{ text: prompt }] }],
+                    };
+                    const response = await fetch(API_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    if (result.candidates && result.candidates[0] && result.candidates[0].content.parts[0].text) {
+                        return result.candidates[0].content.parts[0].text;
+                    } else {
+                        throw new Error("Invalid response structure from Gemini API");
+                    }
+                } catch (error) {
+                    console.error(`API Call attempt ${attempt + 1} failed:`, error);
+                    attempt++;
+                    if (attempt < maxRetries) {
+                        const delay = Math.pow(2, attempt) * 1000; // Exponential backoff
+                        console.log(`Retrying in ${delay / 1000}s...`);
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                    } else {
+                        return "Sorry, I couldn't generate a response at the moment. Please try again later.";
+                    }
+                }
+            }
+        }
+
+
+        // Typing effect script
+        const roles = ["a Mechanical Engineer", "a CFD Analyst", "a Simulation Expert", "a Machine Learning Enthusiast"];
+        let roleIndex = 0;
+        let charIndex = 0;
+        const typedTextSpan = document.getElementById("typed-text");
+        const cursorSpan = document.createElement("span");
+        cursorSpan.className = "typed-cursor";
+        cursorSpan.innerHTML = "&nbsp;";
+        typedTextSpan.parentNode.insertBefore(cursorSpan, typedTextSpan.nextSibling);
+
+        function type() {
+            if (charIndex < roles[roleIndex].length) {
+                typedTextSpan.textContent += roles[roleIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, 100);
+            } else {
+                setTimeout(erase, 2000);
+            }
+        }
+
+        function erase() {
+            if (charIndex > 0) {
+                typedTextSpan.textContent = roles[roleIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erase, 50);
+            } else {
+                roleIndex = (roleIndex + 1) % roles.length;
+                setTimeout(type, 500);
+            }
+        }
+
+        // --- Event Listeners and UI Logic ---
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(type, 500);
+
+            // Header scroll effect
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('bg-custom-card', 'shadow-lg');
+                } else {
+                    header.classList.remove('bg-custom-card', 'shadow-lg');
+                }
+            });
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when a link is clicked
+            const mobileNavLinks = document.querySelectorAll('#mobile-menu a, #header nav a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+            
+            // Fade-in sections on scroll
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Contact Modal functionality
+            const getInTouchBtn = document.getElementById('get-in-touch-btn');
+            const contactModal = document.getElementById('contact-modal');
+            const closeContactModalBtn = document.getElementById('close-contact-modal-btn');
+
+            getInTouchBtn.addEventListener('click', () => {
+                contactModal.classList.remove('hidden');
+                contactModal.classList.add('flex');
+            });
+
+            closeContactModalBtn.addEventListener('click', () => {
+                contactModal.classList.add('hidden');
+                contactModal.classList.remove('flex');
+            });
+            
+            // AI Summarizer Modal functionality
+            const summaryModal = document.getElementById('summary-modal');
+            const closeSummaryModalBtn = document.getElementById('close-summary-modal-btn');
+            const summaryContent = document.getElementById('summary-content');
+            const summarizeBtns = document.querySelectorAll('.summarize-btn');
+
+            summarizeBtns.forEach(btn => {
+                btn.addEventListener('click', async (e) => {
+                    const projectCard = e.target.closest('.p-6');
+                    const title = projectCard.querySelector('h3').innerText;
+                    const description = projectCard.querySelector('p').innerText;
+                    
+                    summaryModal.classList.remove('hidden');
+                    summaryModal.classList.add('flex');
+                    summaryContent.innerHTML = '<div class="spinner"></div>';
+
+                    const prompt = `As a technical recruiter, write a concise summary (around 80-100 words) for a portfolio project. Highlight the key skills, technologies, and outcomes. Project Title: "${title}". Description: "${description}"`;
+                    
+                    const summary = await callGeminiAPI(prompt);
+                    summaryContent.innerHTML = summary.replace(/\n/g, '<br>');
+                });
+            });
+
+            closeSummaryModalBtn.addEventListener('click', () => {
+                summaryModal.classList.add('hidden');
+                summaryModal.classList.remove('flex');
+            });
+
+             // AI Career Advisor functionality
+            const careerAdviceBtn = document.getElementById('career-advice-btn');
+            const careerAdviceOutput = document.getElementById('career-advice-output');
+
+            careerAdviceBtn.addEventListener('click', async () => {
+                careerAdviceBtn.disabled = true;
+                careerAdviceBtn.innerText = 'Generating...';
+                careerAdviceOutput.classList.remove('hidden');
+                careerAdviceOutput.innerHTML = '<div class="spinner"></div>';
+                
+                // Construct a detailed profile summary for the prompt
+                const profileSummary = `
+                    **Candidate Profile: Abhinav Kumar Singh**
+
+                    **Education:**
+                    - M.Tech in Computational and Experimental Mechanics, IIT Madras (Ongoing)
+                    - Master's RA in ThermoFluid Engineering, IIT Hyderabad
+                    - B.Tech in Mechanical Engineering, MMMUT
+
+                    **Core Skills:**
+                    - Design & Simulation: ANSYS (Fluent), SOLIDWORKS, COMSOL, CATIA V6
+                    - Programming: MATLAB, Python, C++
+                    - Domain Knowledge: CFD, FEA, Machine Learning, Turbulence Modeling
+
+                    **Key Projects:**
+                    1.  **Turbulent-Flow in Helically-Coiled Pipes:** Conducted numerical analysis using CFD (ANSYS) to study turbulent flow, validating models against experimental data with less than 7% error.
+                    2.  **CNN for Casting Defect Detection:** Developed a Convolutional Neural Network in Python for defect detection in ultrasonic images.
+                    3.  **Helmet Analysis:** Performed static and dynamic FEA on helmet designs using ANSYS and Fusion 360 to optimize materials and ensure safety standards.
+                    4.  **Additive Manufacturing Seminar:** Researched and presented on the use of 3D printing in aerospace for jet engine components.
+
+                    **Experience:**
+                    - Master's Research Assistant (ThermoFluid Engineering)
+                    - Summer Intern at IFFCO (Analyzed ammonia-based boiler systems)
+                `;
+
+                const prompt = `Based on the following detailed candidate profile, act as an expert career advisor for a mechanical engineer. Provide the following in a structured and professional format (using markdown for headings and lists):
+                1.  **Top 3 Career Paths:** Suggest three specific and promising career paths that align with this profile.
+                2.  **Key Skills for Growth:** For each path, list 2-3 essential skills the candidate should focus on developing.
+                3.  **Next Portfolio Project Idea:** Propose one innovative project that combines the candidate's skills in CFD/FEA and Machine Learning.
+                
+                ${profileSummary}
+                `;
+
+                const advice = await callGeminiAPI(prompt);
+                // Simple markdown to HTML conversion
+                let formattedAdvice = advice
+                    .replace(/### (.*)/g, '<h4 class="text-lg font-semibold text-sky-400 mt-4 mb-2">$1</h4>')
+                    .replace(/## (.*)/g, '<h3 class="text-xl font-bold text-white mb-3">$1</h3>')
+                    .replace(/\*\* (.*?)/g, '<strong class="text-sky-300">$1</strong>')
+                    .replace(/\* (.*?)/g, '<li class="ml-4 mb-1 list-disc">$1</li>')
+                    .replace(/\n/g, '<br>');
+
+                careerAdviceOutput.innerHTML = formattedAdvice;
+                careerAdviceBtn.disabled = false;
+                careerAdviceBtn.innerText = 'Generate Career Insights';
+            });
+            
+            // Close modals on outside click
+            window.addEventListener('click', (event) => {
+                if (event.target === contactModal) {
+                    contactModal.classList.add('hidden');
+                    contactModal.classList.remove('flex');
+                }
+                if (event.target === summaryModal) {
+                    summaryModal.classList.add('hidden');
+                    summaryModal.classList.remove('flex');
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>
